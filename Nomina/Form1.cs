@@ -14,11 +14,19 @@ namespace Nomina
 {
     public partial class Form1 : Form
     {
+        List<string> columnas;
         public Form1()
         {
             InitializeComponent();
+            columnas =new List<string>();
+            columnas.Add("EE");
+            columnas.Add("Nombre");
+            columnas.Add("Apellido");
+            columnas.Add("Rg. Hrs");
+            columnas.Add("OT. Hrs.");
+            columnas.Add("D Hrs.");
         }
-
+        
         private void importarExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ofdExcel.ShowDialog() == DialogResult.OK)
@@ -57,10 +65,9 @@ namespace Nomina
                 DataTable dt = new DataTable();
 
                 // Leer los encabezados de columna
-                int colCount = worksheet.Dimension.End.Column;
-                for(int i=0;i<=colCount;i++)
+                foreach (var col in columnas)
                 {
-                    dt.Columns.Add(worksheet.Cells[2, i + 1].Text);
+                    dt.Columns.Add(col);
                 }
 
                 // Leer las filas de datos
@@ -68,15 +75,31 @@ namespace Nomina
                 for (int i = 3; i < rowCount; i++)
                 {
                     DataRow row = dt.NewRow();
-                    for (int j = 1; j < colCount-1; j++)
+                    for (int j = 1; j < dt.Columns.Count; j++)
                     {
-                        row[j] = worksheet.Cells[i, j ].Text;
+                        row[j-1] = worksheet.Cells[i, j ].Text;
+                        if (j == 2) { 
+                            string[] partes=SepararNombre(worksheet.Cells[i, j].Text);
+                        }
                     }
                     dt.Rows.Add(row);
                 }
 
 
             }
+        }
+
+        private string [] SepararNombre(string nombreCompleto)
+        { 
+            
+            string[] partes = nombreCompleto.Split(',');
+            if (partes.Length >= 2)
+            {
+                string apellido = partes[0];
+                string nombre = partes[1]; 
+                partes[1] = nombre.Trim();               
+            }
+            return partes;
         }
     }
 }
