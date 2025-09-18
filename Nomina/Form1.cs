@@ -1,9 +1,11 @@
 ﻿using OfficeOpenXml;
+using OfficeOpenXml.Drawing.Style.ThreeD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +37,7 @@ namespace Nomina
                 //MessageBox.Show("Archivo seleccionado: " + archivo);
                 CargarExcel(archivo);
 
+
             }
         }
 
@@ -50,6 +53,7 @@ namespace Nomina
 
         private void CargarExcel(string path)
         {
+            DataTable dt = new DataTable();
             ExcelPackage.License.SetNonCommercialPersonal("Jose Luis Mota Espeleta");
 
             using (var package = new ExcelPackage(new System.IO.FileInfo(path)))
@@ -62,7 +66,7 @@ namespace Nomina
 
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
 
-                DataTable dt = new DataTable();
+
 
                 // Leer los encabezados de columna
                 foreach (var col in columnas)
@@ -71,20 +75,47 @@ namespace Nomina
                 }
 
                 // Leer las filas de datos
-                int rowCount = worksheet.Dimension.End.Row;
+                int rowCount = 0;
+                for (int i = 3; i < worksheet.Dimension.End.Row; i++)
+                {
+                    if (worksheet.Cells[i, 1].Text == "")
+                        break;
+                    else
+                        rowCount = rowCount + 1;
+                }
+                rowCount = rowCount + 3;
                 for (int i = 3; i < rowCount; i++)
                 {
                     DataRow row = dt.NewRow();
-                    for (int j = 1; j < dt.Columns.Count; j++)
+                    for (int j = 1; j < dt.Columns.Count + 1; j++)
                     {
-                        row[j-1] = worksheet.Cells[i, j ].Text;
-                        if (j == 2) { 
-                            string[] partes=SepararNombre(worksheet.Cells[i, j].Text);
+                        if (worksheet.Cells[i, j].Text == "")
+                            break;
+                        row[j - 1] = worksheet.Cells[i, j].Text;
+                        if (j == 2)
+                        {
+                            string[] partes = SepararNombre(worksheet.Cells[i, j].Text);
+                            row[1] = partes[1];
+                            row[2] = partes[0];
+                            j++;
                         }
                     }
                     dt.Rows.Add(row);
                 }
 
+
+            }
+
+            // Mostrar los datos en el DataGridView
+            dgvInformacion.Rows.Clear();k
+            dgvInformacion.Rows.Add(dt.Rows.Count);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    dgvInformacion.Rows[i].Cells[j].Value = dt.Rows[i][j].ToString();
+                }
 
             }
         }

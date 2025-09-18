@@ -36,16 +36,16 @@
             this.importarExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvInformacion = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.ofdExcel = new System.Windows.Forms.OpenFileDialog();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tmrReloj = new System.Windows.Forms.Timer(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ttsHora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ofdExcel = new System.Windows.Forms.OpenFileDialog();
+            this.tmrReloj = new System.Windows.Forms.Timer(this.components);
             this.menuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -79,7 +79,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(147, 34);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -94,7 +94,7 @@
             // importarExcelToolStripMenuItem
             // 
             this.importarExcelToolStripMenuItem.Name = "importarExcelToolStripMenuItem";
-            this.importarExcelToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.importarExcelToolStripMenuItem.Size = new System.Drawing.Size(227, 34);
             this.importarExcelToolStripMenuItem.Text = "Importar Excel";
             this.importarExcelToolStripMenuItem.Click += new System.EventHandler(this.importarExcelToolStripMenuItem_Click);
             // 
@@ -136,21 +136,6 @@
             this.dgvInformacion.RowTemplate.Height = 28;
             this.dgvInformacion.Size = new System.Drawing.Size(1170, 387);
             this.dgvInformacion.TabIndex = 2;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ttsHora});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 120);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1170, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // ofdExcel
-            // 
-            this.ofdExcel.Filter = "Archivo de Excel|*.xlsx";
             // 
             // Column1
             // 
@@ -200,16 +185,31 @@
             this.Column6.ReadOnly = true;
             this.Column6.Width = 50;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ttsHora});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 114);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1170, 28);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // ttsHora
+            // 
+            this.ttsHora.Name = "ttsHora";
+            this.ttsHora.Size = new System.Drawing.Size(0, 21);
+            // 
+            // ofdExcel
+            // 
+            this.ofdExcel.Filter = "Archivo de Excel|*.xlsx";
+            // 
             // tmrReloj
             // 
             this.tmrReloj.Enabled = true;
             this.tmrReloj.Interval = 1000;
             this.tmrReloj.Tick += new System.EventHandler(this.tmrReloj_Tick);
-            // 
-            // ttsHora
-            // 
-            this.ttsHora.Name = "ttsHora";
-            this.ttsHora.Size = new System.Drawing.Size(0, 15);
             // 
             // Form1
             // 
