@@ -87,23 +87,23 @@ namespace Nomina
                 for (int i = 3; i < rowCount; i++)
                 {
                     DataRow row = dt.NewRow();
+                    int k = 1;
                     for (int j = 1; j < dt.Columns.Count + 1; j++)
                     {
-                        if (worksheet.Cells[i, j].Text == "")
+                        if (worksheet.Cells[i, k].Text == "")
                             break;
-                        row[j - 1] = worksheet.Cells[i, j].Text;
+                        row[j - 1] = worksheet.Cells[i, k].Text;
                         if (j == 2)
                         {
-                            string[] partes = SepararNombre(worksheet.Cells[i, j].Text);
+                            string[] partes = SepararNombre(worksheet.Cells[i, k].Text);
                             row[1] = partes[1];
                             row[2] = partes[0];
                             j++;
                         }
+                        k++;
                     }
                     dt.Rows.Add(row);
                 }
-
-
             }
 
             // Mostrar los datos en el DataGridView

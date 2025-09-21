@@ -19,10 +19,10 @@ namespace Nomina
         public Form2()
         {
             InitializeComponent();
-            CargarDatosDelJson();
+            CargarDatos();
         }
 
-        private Datos ObtenerDatosDelFormulario()
+        private Datos ObtenerDatos()
         {
             try
             {
@@ -34,12 +34,12 @@ namespace Nomina
             }
             catch (FormatException ex)
             {
-                MessageBox.Show("Valores inválidos" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Valores inválidos, " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return null;
             }
         }
 
-        private void CargarDatosDelJson()
+        private void CargarDatos()
         {
             if (File.Exists(rutaJson))
             {
@@ -76,12 +76,10 @@ namespace Nomina
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Datos datosParaGuardar = ObtenerDatosDelFormulario();
-            if (datosParaGuardar != null)
+            Datos guardarDatos = ObtenerDatos();
+            if (guardarDatos != null)
             {
-                guardarJson(datosParaGuardar);
-                MessageBox.Show("Datos guardados exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                guardarJson(guardarDatos);
                 this.Close();
             }
         }
