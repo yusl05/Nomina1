@@ -107,7 +107,7 @@ namespace Nomina
             }
 
             // Mostrar los datos en el DataGridView
-            dgvInformacion.Rows.Clear();k
+            dgvInformacion.Rows.Clear();
             dgvInformacion.Rows.Add(dt.Rows.Count);
 
             for (int i = 0; i < dt.Rows.Count; i++)
