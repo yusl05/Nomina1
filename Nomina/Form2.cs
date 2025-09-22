@@ -46,13 +46,13 @@ namespace Nomina
                 try
                 {
                     string json = File.ReadAllText(rutaJson);
-                    Datos datosCargados = JsonConvert.DeserializeObject<Datos>(json);
+                    Datos datosJson = JsonConvert.DeserializeObject<Datos>(json);
 
-                    if (datosCargados != null)
+                    if (datosJson != null)
                     {
-                        tBRegular.Text = datosCargados.regular.ToString();
-                        tBHrsExtra.Text = datosCargados.extras.ToString();
-                        tBDobles.Text = datosCargados.dobles.ToString();
+                        tBRegular.Text = datosJson.regular.ToString();
+                        tBHrsExtra.Text = datosJson.extras.ToString();
+                        tBDobles.Text = datosJson.dobles.ToString();
                     }
                 }
                 catch (Exception ex)
