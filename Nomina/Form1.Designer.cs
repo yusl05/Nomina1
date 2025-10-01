@@ -38,10 +38,6 @@
             this.insertarValoresAHorasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvInformacion = new System.Windows.Forms.DataGridView();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.ttsHora = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ofdExcel = new System.Windows.Forms.OpenFileDialog();
-            this.tmrReloj = new System.Windows.Forms.Timer(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +48,10 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ttsHora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ofdExcel = new System.Windows.Forms.OpenFileDialog();
+            this.tmrReloj = new System.Windows.Forms.Timer(this.components);
             this.tmrActualizacion = new System.Windows.Forms.Timer(this.components);
             this.menuPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -88,7 +88,7 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(147, 34);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -131,7 +131,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Size = new System.Drawing.Size(1170, 533);
-            this.splitContainer1.SplitterDistance = 386;
+            this.splitContainer1.SplitterDistance = 385;
             this.splitContainer1.TabIndex = 1;
             // 
             // dgvInformacion
@@ -157,34 +157,8 @@
             this.dgvInformacion.ReadOnly = true;
             this.dgvInformacion.RowHeadersWidth = 62;
             this.dgvInformacion.RowTemplate.Height = 28;
-            this.dgvInformacion.Size = new System.Drawing.Size(1170, 386);
+            this.dgvInformacion.Size = new System.Drawing.Size(1170, 385);
             this.dgvInformacion.TabIndex = 2;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ttsHora});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 121);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1170, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // ttsHora
-            // 
-            this.ttsHora.Name = "ttsHora";
-            this.ttsHora.Size = new System.Drawing.Size(0, 15);
-            // 
-            // ofdExcel
-            // 
-            this.ofdExcel.Filter = "Archivo de Excel|*.xlsx";
-            // 
-            // tmrReloj
-            // 
-            this.tmrReloj.Enabled = true;
-            this.tmrReloj.Interval = 1000;
-            this.tmrReloj.Tick += new System.EventHandler(this.tmrReloj_Tick);
             // 
             // Column1
             // 
@@ -265,6 +239,32 @@
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
             this.Column10.Width = 50;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ttsHora});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 122);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1170, 22);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // ttsHora
+            // 
+            this.ttsHora.Name = "ttsHora";
+            this.ttsHora.Size = new System.Drawing.Size(0, 15);
+            // 
+            // ofdExcel
+            // 
+            this.ofdExcel.Filter = "Archivo de Excel|*.xlsx";
+            // 
+            // tmrReloj
+            // 
+            this.tmrReloj.Enabled = true;
+            this.tmrReloj.Interval = 1000;
+            this.tmrReloj.Tick += new System.EventHandler(this.tmrReloj_Tick);
             // 
             // tmrActualizacion
             // 
